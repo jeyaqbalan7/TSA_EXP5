@@ -45,37 +45,6 @@ result.seasonal.plot()
 plt.title('Seasonal Decomposition')
 plt.ylabel('Seasonal Component')
 plt.show()
-import pandas as pd
-import matplotlib.pyplot as plt
-from statsmodels.tsa.seasonal import seasonal_decompose
-
-data = pd.read_csv('/content/rainfall.csv')
-print("FIRST FIVE ROWS:")
-print(data.head())
-data = data.head(120)  # Adjust this number as per your dataset's requirement
-data['Date'] = pd.date_range(start='1/1/2010', periods=len(data), freq='M')
-data.set_index('Date', inplace=True)
-
-# Replace 'Price' with the actual column name containing your data, e.g., 'rainfall'
-result = seasonal_decompose(data['rainfall'], model='additive', period=12) 
-
-print("\nPLOTTING THE DATA:")
-plt.figure(figsize=(10, 5))
-
-# Replace 'Price' with the actual column name, e.g., 'rainfall'
-plt.plot(data['rainfall']) 
-
-plt.title('Yearly Average rainfall Over Time') # Update title accordingly
-plt.xlabel('Year')
-plt.ylabel('rainfall') # Update y-axis label accordingly
-plt.show()
-
-print("\nSEASONAL PLOT REPRESENTATION:")
-plt.figure(figsize=(10, 5))
-result.seasonal.plot()
-plt.title('Seasonal Decomposition')
-plt.ylabel('Seasonal Component')
-plt.show()
 
 print("\nTREND PLOT REPRESENTATION:")
 plt.figure(figsize=(10, 5))
